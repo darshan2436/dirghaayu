@@ -14,24 +14,20 @@ import image from "./Assets/background.jpg";
 
 function App() {
   return (
-    //  <div className=" home py-96 bg-gray-300 bg-scroll bg-cover " style={{ backgroundImage: `url(${image})`}}>
-    //  <div className="nav -my-96 py-0.5 bg-opacity-50 bg-green-200 rounded-lg">
-    //   <Router>
-    //     <nav className="m-5 position:sticky ">
-    <div className="home min-h-screen bg-gray-300 bg-cover bg-scroll" style={{ backgroundImage: `url(${image})` }}> 
-    <Router> 
-      <nav className="fixed top-0 left-0 w-full bg-opacity-90 bg-green-200 py-4 z-10 shadow-md"> 
-      <div className="container mx-auto flex justify-between items-center"> 
-        <div className="flex space-x-4">
-          <Link to="/" className="mx-4 hover:text-blue-500 text-xl hover:font-bold ">Home</Link>
-          <Link to="/appointment" className="mx-4 hover:text-blue-500 text-xl hover:font-bold ">Appointment</Link>
-          <Link to="/donation" className="mx-4 hover:text-blue-500 text-xl hover:font-bold">Donation</Link>
-          <Link to="/login" className="mx-4 hover:text-blue-500 text-xl hover:font-bold">Login</Link>
-          <Link to="/aboutus" className="mx-4 hover:text-blue-500 text-xl hover:font-bold">About Us</Link>
-         </div>
-         </div>
-
-
+    <div className="home min-h-screen bg-gray-300 bg-cover bg-scroll" style={{ backgroundImage: `url(${image})` }}>
+      <Router>
+        <nav className="p-4 shadow-md">
+          <div className="container mx-auto flex justify-between items-center">
+            <div className="flex space-x-4">
+              <DropdownMenu label="Home" to="/" />
+              <DropdownMenu label="Appointment" to="/appointment" />
+              <DropdownMenu label="Donation" to="/donation" />
+              <DropdownMenu label="About Us" to="/aboutus" />
+            </div>
+            <div>
+              <Link to="/login" className="text-white hover:text-yellow-500 text-xl">Login</Link>
+            </div>
+          </div>
         </nav>
         <Routes>
           <Route path="/" element={<Home />} />
