@@ -23,7 +23,7 @@ function Appointment(){
       };
 
     return(
-    <div className="appointment-section w-3/5 flex flex-col m-auto border rounded-md shadow-slate-500  p-5">
+    <div className="appointment-section sm:w-5/6 md:w-4/5 lg:w-3/5 flex flex-col m-auto border rounded-md shadow-slate-500  p-5">
         <h2 className="text-3xl font-bold mb-4 text-center">Book Your Appointment</h2>
         <p className="mb-6">
             Schedule a visit with our expert doctors at your convenience. Select your
