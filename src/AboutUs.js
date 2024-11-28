@@ -13,7 +13,7 @@ function AboutUs() {
       <section className="max-w-4xl mx-auto text-center px-4 mb-16">
         <h2 className="text-3xl font-semibold text-gray-800">Our Mission</h2>
         <p className="text-lg text-gray-600 mt-4">
-          We are committed to providing innovative solutions that help businesses thrive in the modern digital world. Our team of experts works collaboratively to create user-friendly products that exceed expectations.
+        p1
         </p>
       </section>
 
@@ -30,7 +30,7 @@ function AboutUs() {
             <h3 className="text-xl font-semibold text-gray-800">Darshan Thapa</h3>
             <p className="text-gray-500">Team Leader</p>
             <p className="mt-2 text-gray-600">
-              John is passionate about innovation and leading the company to new heights.
+              P2
             </p>
           </div>
 
@@ -43,7 +43,7 @@ function AboutUs() {
             <h3 className="text-xl font-semibold text-gray-800">Hari Shankar Rana</h3>
             <p className="text-gray-500">Hari Shankar Rana</p>
             <p className="mt-2 text-gray-600">
-              Jane leads the development team and ensures our products are built with the latest technologies.
+             P3
             </p>
           </div>
 
@@ -56,7 +56,7 @@ function AboutUs() {
             <h3 className="text-xl font-semibold text-gray-800">Binod Acharya</h3>
             <p className="text-gray-500">Product Manager</p>
             <p className="mt-2 text-gray-600">
-              Mark is responsible for guiding our products from concept to launch, ensuring they meet our customers' needs.
+              P4
             </p>
           </div>
 
@@ -70,7 +70,7 @@ function AboutUs() {
             <h3 className="text-xl font-semibold text-gray-800">Nishan Shrestha</h3>
             <p className="text-gray-500">Product Manager</p>
             <p className="mt-2 text-gray-600">
-              Mark is responsible for guiding our products from concept to launch, ensuring they meet our customers' needs.
+           P5
             </p>
           </div>
         </div>
