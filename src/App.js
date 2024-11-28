@@ -9,16 +9,20 @@ import AboutUs from "./AboutUs.js";
 
 
 
+
+
 function App() {
   return (
     <div className="">
       <Router>
         <nav className="m-5 position:sticky">
-          <Link to="/" className="mx-4 hover:text-blue-500 text-xl ">Home</Link>
-          <Link to="/appointment" className="mx-4 hover:text-blue-500 text-xl ">Appointment</Link>
-          <Link to="/donation" className="mx-4 hover:text-blue-500 text-xl ">Donation</Link>
-          <Link to="/login" className="mx-4 hover:text-blue-500 text-xl ">Login</Link>
-          <Link to="/aboutus" className="mx-4 hover:text-blue-500 text-xl ">About Us</Link>
+          <Link to="/" className="mx-4 hover:text-blue-500  hover:text-2xl text-xl ">Home</Link>
+          <Link to="/appointment" className="mx-4 hover:text-blue-500 hover:text-2xl text-xl ">Appointment</Link>
+          <Link to="/donation" className="mx-4 hover:text-blue-500 hover:text-2xl text-xl ">Donation</Link>
+          <Link to="/login" className="mx-4 hover:text-blue-500 hover:text-2xl text-xl ">Login</Link>
+          <Link to="/aboutus" className="mx-4 hover:text-blue-500 hover:text-2xl text-xl ">About Us</Link>
+         
+
 
         </nav>
         <Routes>
@@ -28,6 +32,8 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/aboutus" element={<AboutUs />} />
           <Route path="/register" element={<Register />} />
+      
+
         </Routes>
       </Router>
     </div>
@@ -35,4 +41,4 @@ function App() {
   );
 }
 
-export default App;
+export default App;
