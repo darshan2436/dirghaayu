@@ -1,5 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+ import { motion, AnimatePresence } from 'framer-motion';
 import Home from "./Home.js";
 import Appointment from "./Appointment.js";
 import Donation from "./Donation.js";
@@ -10,18 +11,16 @@ import AboutUs from "./AboutUs.js";
 import BmiCalculator from './BmiCalculator.js';
 
 function App() {
-  
-
   return (
     <div className="">
       <Router>
         <nav className="bg-gray-800 p-4 shadow-md">
           <div className="container mx-auto flex justify-between items-center">
             <div className="flex space-x-4">
-              <Link to="/" className="text-white hover:text-yellow-500 text-xl">Home</Link>
-              <Link to="/appointment" className="text-white hover:text-yellow-500 text-xl">Appointment</Link>
-              <Link to="/donation" className="text-white hover:text-yellow-500 text-xl">Donation</Link>
-              <Link to="/aboutus" className="text-white hover:text-yellow-500 text-xl">About Us</Link>
+              <DropdownMenu label="Home" to="/" />
+              <DropdownMenu label="Appointment" to="/appointment" />
+              <DropdownMenu label="Donation" to="/donation" />
+              <DropdownMenu label="About Us" to="/aboutus" />
             </div>
             <div>
               <Link to="/login" className="text-white hover:text-yellow-500 text-xl">Login</Link>
@@ -44,18 +43,36 @@ function App() {
   );
 }
 
-function DonorForm() 
+function DropdownMenu({ label, to }) {
+  const [isOpen, setIsOpen] = React.useState(false);
 
-{ return ( 
-    <form className="bg-white p-6 rounded shadow-md"> 
-      <h2 className="text-2xl mb-4">Donor Form</h2> 
-        <input type="text" placeholder="Name" className="block w-full p-2 border mb-4"/> 
-        <input type="text" placeholder="Blood Type" className="block w-full p-2 border mb-4"/> 
-        <input type="text" placeholder="Contact" className="block w-full p-2 border mb-4"/> 
-        <button className="bg-blue-500 text-white py-2 px-4 rounded">Submit</button> 
-    </form> ); 
+  return (
+    <div 
+      className="relative" 
+      onMouseEnter={() => setIsOpen(true)} 
+      onMouseLeave={() => setIsOpen(false)}
+    >
+      <Link to={to} className="text-white hover:text-yellow-500 text-xl">{label}</Link>
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            className="absolute left-0 mt-2 w-48 bg-white shadow-lg rounded-md"
+            onMouseEnter={() => setIsOpen(true)}
+            onMouseLeave={() => setIsOpen(false)}
+          >
+            <div className="p-2">
+              <Link to={`${to}/sub1`} className="block px-4 py-2 hover:bg-gray-200">Submenu 1</Link>
+              <Link to={`${to}/sub2`} className="block px-4 py-2 hover:bg-gray-200">Submenu 2</Link>
+              <Link to={`${to}/sub3`} className="block px-4 py-2 hover:bg-gray-200">Submenu 3</Link>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
 }
-
-
 
 export default App;
