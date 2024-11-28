@@ -1,9 +1,8 @@
-<<<<<<< HEAD
-import React, { useState } from "react";
-=======
-// App.js
+
+import { useState } from "react";
+
 import React from "react";
->>>>>>> 427a15b0915b79b1c4355558306643a4836f5a27
+
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 
 
