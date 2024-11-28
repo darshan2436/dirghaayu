@@ -5,6 +5,7 @@ function Register() {
         username: '',
         email: '',
         bloodGroup: '',
+        dateOfBirth: '',
         password: '',
         confirmPassword: ''
     });
@@ -30,7 +31,7 @@ function Register() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        if (formData.username === '' || formData.email === '' || formData.bloodGroup === '' || formData.password === '' || formData.confirmPassword === '') {
+        if (formData.username === '' || formData.email === '' || formData.bloodGroup === '' || formData.dateOfBirth === '' || formData.password === '' || formData.confirmPassword === '') {
             setError('All fields are required');
             return;
         }
@@ -112,6 +113,20 @@ function Register() {
                             <option value="O+">O+</option>
                             <option value="O-">O-</option>
                         </select>
+                    </div>
+                    <div className="mb-4">
+                        <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="date_of_birth">
+                            Date of Birth
+                        </label>
+                        <input
+                            type="date"
+                            id="date_of_birth"
+                            name="dateOfBirth"
+                            value={formData.dateOfBirth}
+                            onChange={handleChange}
+                            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                            required
+                        />
                     </div>
                     <div className="mb-4">
                         <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="password">
