@@ -1,21 +1,23 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-import { motion, AnimatePresence } from 'framer-motion';
+import { AnimatePresence, motion } from "framer-motion";
 import Home from "./Home.js";
 import Appointment from "./Appointment.js";
 import Donation from "./Donation.js";
 import Login from "./Login.js";
 import Register from "./Register.js";
-import DonorForm from "./DonorForm.jsx";
-import RequestForm from "./RequestForm.jsx";
 import AboutUs from "./AboutUs.js";
-import BmiCalculator from './BmiCalculator.js';
+import DonorForm from "./DonorForm.jsx";
+import image from "./Assets/background.jpg";
+
+
+
 
 function App() {
   return (
-    <div className="">
+    <div className="home min-h-screen bg-gray-300 bg-cover bg-scroll" style={{ backgroundImage: `url(${image})` }}>
       <Router>
-        <nav className="bg-gray-800 p-4 shadow-md">
+        <nav className="p-4 shadow-md">
           <div className="container mx-auto flex justify-between items-center">
             <div className="flex space-x-4">
               <DropdownMenu label="Home" to="/" />
@@ -35,9 +37,8 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/aboutus" element={<AboutUs />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/donorform" element={<DonorForm />} />
-          <Route path="/requestform" element={<RequestForm />} />
-          <Route path="/bmicalculator" element={<BmiCalculator />} />
+          
+
         </Routes>
       </Router>
     </div>
