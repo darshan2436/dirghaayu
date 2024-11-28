@@ -1,3 +1,4 @@
+// App.js
 import React from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import Home from "./Home.js";
@@ -7,23 +8,22 @@ import Login from "./Login.js";
 import Register from "./Register.js";
 import AboutUs from "./AboutUs.js";
 
-
-
-
-
 function App() {
   return (
     <div className="">
       <Router>
-        <nav className="m-5 position:sticky">
-          <Link to="/" className="mx-4 hover:text-blue-500  hover:text-2xl text-xl ">Home</Link>
-          <Link to="/appointment" className="mx-4 hover:text-blue-500 hover:text-2xl text-xl ">Appointment</Link>
-          <Link to="/donation" className="mx-4 hover:text-blue-500 hover:text-2xl text-xl ">Donation</Link>
-          <Link to="/login" className="mx-4 hover:text-blue-500 hover:text-2xl text-xl ">Login</Link>
-          <Link to="/aboutus" className="mx-4 hover:text-blue-500 hover:text-2xl text-xl ">About Us</Link>
-         
-
-
+        <nav className="bg-gray-800 p-4 shadow-md">
+          <div className="container mx-auto flex justify-between items-center">
+            <div className="flex space-x-4">
+              <Link to="/" className="text-white hover:text-yellow-500 text-xl">Home</Link>
+              <Link to="/appointment" className="text-white hover:text-yellow-500 text-xl">Appointment</Link>
+              <Link to="/donation" className="text-white hover:text-yellow-500 text-xl">Donation</Link>
+              <Link to="/aboutus" className="text-white hover:text-yellow-500 text-xl">About Us</Link>
+            </div>
+            <div>
+              <Link to="/login" className="text-white hover:text-yellow-500 text-xl">Login</Link>
+            </div>
+          </div>
         </nav>
         <Routes>
           <Route path="/" element={<Home />} />
@@ -32,13 +32,10 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/aboutus" element={<AboutUs />} />
           <Route path="/register" element={<Register />} />
-      
-
         </Routes>
       </Router>
     </div>
-    
   );
 }
 
-export default App;
+export default App;
