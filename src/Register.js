@@ -3,7 +3,7 @@ import React from 'react';
 function Register() {
     return (
         <div className="flex items-center justify-center min-h-screen bg-gray-200">
-            <div className="bg-stone-400 p-8 rounded-lg shadow-slate-950 w-full max-w-md shadow-2xl">
+            <div className="bg-stone-400 p-8 rounded-lg shadow-slate-950 w-full max-w-sm shadow-2xl">
                 <div className="flex justify-center mb-4">
                     <img src="image/logo.jpg" alt="Logo" className="h-20 rounded-2xl" />
                 </div>
