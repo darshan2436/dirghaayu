@@ -7,7 +7,10 @@ import Appointment from "./Appointment.js";
 import Donation from "./Donation.js";
 import Login from "./Login.js";
 import Register from "./Register.js";
+
 import Donate from "./DonorForm.jsx";
+import RequestForm from "./RequestForm.jsx";
+import AboutUs from "./AboutUs.js";
 
 function App() {
   const [showDonorForm, setShowDonorForm] = useState(false); 
@@ -27,15 +30,19 @@ function App() {
           <Link to="/appointment" className="mx-4 hover:text-blue-500 text-xl ">Appointment</Link>
           <Link to="/donation" className="mx-4 hover:text-blue-500 text-xl ">Donation</Link>
           <Link to="/login" className="mx-4 hover:text-blue-500 text-xl ">Login</Link>
+          <Link to="/aboutus" className="mx-4 hover:text-blue-500 text-xl ">About Us</Link>
+
         </nav>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/appointment" element={<Appointment />} />
           <Route path="/donation" element={<Donation />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/aboutus" element={<AboutUs />} />
           <Route path="/register" element={<Register />} />
           <Route path="/donorform" element={<DonorForm />} />
-          <Route path="/donate" element={<Donate/>} />
+          
+          <Route path="/requestform" element={<RequestForm />} />
         </Routes>
       </Router>
     </div>

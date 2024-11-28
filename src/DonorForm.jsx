@@ -1,137 +1,62 @@
 import React, { useState } from 'react';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 
-function DonorForm() {
-  const [formData, setFormData] = useState({
-    name: '',
-    bloodType: '',
-    contact: '',
-    email: '',
-    address: '',
-    age: '',
-    gender: '',
-  });
+import Home from './Home.js';
+import Appointment from './Appointment.js';
+import Donation from './Donation.js';
+import Login from './Login.js';
+import Register from './Register.js';
+import DonorForm from './DonorForm';
+import RequestForm from './RequestForm';
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
+function App() {
+  const [showDonorForm, setShowDonorForm] = useState(false);
+  const [showRequestForm, setShowRequestForm] = useState(false);
+
+  const handleDonorClick = () => {
+    setShowDonorForm(true);
+    setShowRequestForm(false);
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log('Form Submitted:', formData);
-    alert('Thank you for donating!');
-    // You can send the data to an API or backend here
+  const handleRequestClick = () => {
+    setShowRequestForm(true);
+    setShowDonorForm(false);
   };
 
   return (
-    <div className="max-w-md mx-auto mt-8">
-      <form
-        className="bg-white p-6 rounded shadow-md"
-        onSubmit={handleSubmit}
-      >
-        <h2 className="text-2xl font-semibold mb-4 text-center">Donor Form</h2>
-
-        <div className="mb-4">
-          <label className="block text-gray-700">Name</label>
-          <input
-            type="text"
-            name="name"
-            placeholder="Name"
-            value={formData.name}
-            onChange={handleChange}
-            className="block w-full p-2 border rounded"
-            required
-          />
-        </div>
-
-        <div className="mb-4">
-          <label className="block text-gray-700">Blood Type</label>
-          <select
-            name="blood"
-            value={formData.blood}
-            onChange={handleChange}
-            className="block w-full p-2 border rounded"
-            required
-          >
-            <option value="">Select</option>
-            <option value="A+">A+</option>
-            <option value="B+">B+</option>
-            <option value="O+">O+</option>
-            <option value="AB+">AB+</option>
-            <option value="A-">B+</option>
-            <option value="B-">O+</option>
-            <option value="O-">O-</option>
-            <option value="AB-">AB-</option>
-          </select>
-        </div>
-
-        <div className="mb-4">
-          <label className="block text-gray-700">Contact</label>
-          <input
-            type="text"
-            name="contact"
-            placeholder="Contact"
-            value={formData.contact}
-            onChange={handleChange}
-            className="block w-full p-2 border rounded"
-            required
-          />
-        </div>
-
-        <div className="mb-4">
-          <label className="block text-gray-700">Address</label>
-          <input
-            type="text"
-            name="address"
-            placeholder="Address"
-            value={formData.address}
-            onChange={handleChange}
-            className="block w-full p-2 border rounded"
-            required
-          />
-        </div>
-
-        <div className="mb-4">
-          <label className="block text-gray-700">Age</label>
-          <input
-            type="number"
-            name="age"
-            placeholder="Age"
-            value={formData.age}
-            onChange={handleChange}
-            className="block w-full p-2 border rounded"
-            required
-          />
-        </div>
-
-        <div className="mb-4">
-          <label className="block text-gray-700">Gender</label>
-          <select
-            name="gender"
-            value={formData.gender}
-            onChange={handleChange}
-            className="block w-full p-2 border rounded"
-            required
-          >
-            <option value="">Select</option>
-            <option value="male">Male</option>
-            <option value="female">Female</option>
-            <option value="other">Other</option>
-          </select>
-        </div>
-
-        <button
-          type="submit"
-          className="w-full bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600"
-        >
-          Submit
+    <div className="">
+      <Router>
+        <nav className="m-5 position:sticky">
+          <Link to="/" className="mx-4 hover:text-blue-500 text-xl">Home</Link>
+          <Link to="/appointment" className="mx-4 hover:text-blue-500 text-xl">Appointment</Link>
+          <Link to="/donation" className="mx-4 hover:text-blue-500 text-xl">Donation</Link>
+          <Link to="/login" className="mx-4 hover:text-blue-500 text-xl">Login</Link>
+        </nav>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/appointment" element={<Appointment />} />
+          <Route path="/donation" element={<Donation />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/donorform" element={<DonorForm />} />
+          <Route path="/requestform" element={<RequestForm />} />
+        </Routes>
+      </Router>
+      <div className="flex justify-center mt-10">
+        <button onClick={handleDonorClick} className="bg-blue-500 text-white py-2 px-4 rounded">
+          Donor
         </button>
-      </form>
+        <button onClick={handleRequestClick} className="bg-green-500 text-white py-2 px-4 rounded ml-4">
+          Request
+        </button>
+      </div>
+      
+      <div className="mt-10">
+        {showDonorForm && <DonorForm />}
+        {showRequestForm && <RequestForm />}
+      </div>
     </div>
   );
 }
 
-export default DonorForm;
+export default App;
