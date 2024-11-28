@@ -1,11 +1,12 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
- import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import Home from "./Home.js";
 import Appointment from "./Appointment.js";
 import Donation from "./Donation.js";
 import Login from "./Login.js";
 import Register from "./Register.js";
+import DonorForm from "./DonorForm.jsx";
 import RequestForm from "./RequestForm.jsx";
 import AboutUs from "./AboutUs.js";
 import BmiCalculator from './BmiCalculator.js';
