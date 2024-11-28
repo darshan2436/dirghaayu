@@ -1,16 +1,19 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function Register() {
     const [formData, setFormData] = useState({
-        username: '',
-        email: '',
+        userName: '',
         bloodGroup: '',
+        email: '',
         dateOfBirth: '',
         password: '',
         confirmPassword: ''
     });
 
     const [error, setError] = useState('');
+    const [loading, setLoading] = useState(false);
+    const navigate = useNavigate();
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -29,27 +32,71 @@ function Register() {
         return password.length >= 8;
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        if (formData.username === '' || formData.email === '' || formData.bloodGroup === '' || formData.dateOfBirth === '' || formData.password === '' || formData.confirmPassword === '') {
+        setLoading(true);
+        setError('');
+
+        // Check if all required fields are filled
+        if (formData.userName === '' || formData.email === '' || formData.bloodGroup === '' || formData.dateOfBirth === '' || formData.password === '' || formData.confirmPassword === '') {
             setError('All fields are required');
+            setLoading(false);
             return;
         }
+        
+        // Email validation
         if (!validateEmail(formData.email)) {
             setError('Invalid email format');
+            setLoading(false);
             return;
         }
+        
+        // Password validation
         if (!validatePassword(formData.password)) {
             setError('Password must be at least 8 characters long');
+            setLoading(false);
             return;
         }
+
+        // Confirm password check
         if (formData.password !== formData.confirmPassword) {
             setError('Passwords do not match');
+            setLoading(false);
             return;
         }
+
+        // Clear error and proceed with registration
         setError('');
-        // Handle form submission (e.g., API call)
-        console.log('Form submitted:', formData);
+        
+        try {
+            const response = await fetch('http://localhost:4000/api/users/register', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    userName: formData.userName,
+                    email: formData.email,
+                    password: formData.password,
+                    bloodGroup: formData.bloodGroup,
+                    dateOfBirth: formData.dateOfBirth
+                })
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+                alert('Registration successful!');
+                navigate('/login');
+                // Optionally, redirect to login page or another component
+            } else {
+                setError(data.message);
+            }
+        } catch (err) {
+            setError('Something went wrong. Please try again.');
+        } finally {
+            setLoading(false);
+        }
+
+        console.log(formData);
     };
 
     return (
@@ -68,8 +115,8 @@ function Register() {
                         <input
                             type="text"
                             id="username"
-                            name="username"
-                            value={formData.username}
+                            name="userName"
+                            value={formData.userName}
                             onChange={handleChange}
                             placeholder="Username"
                             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
@@ -103,7 +150,7 @@ function Register() {
                             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                             required
                         >
-                            <option value="" className="text-gray-700 text-sm font-bold">Select Blood Group</option>
+                            <option value="">Select Blood Group</option>
                             <option value="A+">A+</option>
                             <option value="A-">A-</option>
                             <option value="B+">B+</option>
@@ -162,8 +209,9 @@ function Register() {
                         <button
                             type="submit"
                             className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                            disabled={loading}
                         >
-                            Register
+                            {loading ? 'Registering...' : 'Register'}
                         </button>
                     </div>
                 </form>
