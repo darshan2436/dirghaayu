@@ -1,31 +1,16 @@
-<<<<<<< HEAD
-import React, { useState } from "react";
-=======
-// App.js
 import React from "react";
->>>>>>> 427a15b0915b79b1c4355558306643a4836f5a27
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-
-
 import Home from "./Home.js";
 import Appointment from "./Appointment.js";
 import Donation from "./Donation.js";
 import Login from "./Login.js";
 import Register from "./Register.js";
-
-import Donate from "./DonorForm.jsx";
 import RequestForm from "./RequestForm.jsx";
 import AboutUs from "./AboutUs.js";
+import BmiCalculator from './BmiCalculator.js';
 
 function App() {
-  const [showDonorForm, setShowDonorForm] = useState(false); 
-  const [showRequestForm, setShowRequestForm] = useState(false); 
-  const handleDonorClick = () => { setShowDonorForm(true); 
-    setShowRequestForm(false); }; 
-  const handleRequestClick = () => { 
-    setShowRequestForm(true); 
-    setShowDonorForm(false);
-  };
+  
 
   return (
     <div className="">
@@ -51,8 +36,8 @@ function App() {
           <Route path="/aboutus" element={<AboutUs />} />
           <Route path="/register" element={<Register />} />
           <Route path="/donorform" element={<DonorForm />} />
-          
           <Route path="/requestform" element={<RequestForm />} />
+          <Route path="/bmicalculator" element={<BmiCalculator />} />
         </Routes>
       </Router>
     </div>
