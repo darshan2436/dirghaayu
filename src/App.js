@@ -3,6 +3,7 @@ function App() {
     <div className="">
       <h1 className='text-3xl'>Dirghaayu</h1>
     </div>
+    
   );
 }
 
