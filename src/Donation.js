@@ -1,7 +1,9 @@
 import React from 'react';
 import BmiCalculator from './BmiCalculator';
+import { useNavigate } from 'react-router-dom';
 
 function Donation(){
+    const navigate = useNavigate()
     return(
         
         <div class="bg-white bg-opacity-90 p-6 rounded-2xl shadow-xl text-center space-y-6">
@@ -25,7 +27,8 @@ function Donation(){
 
             <div class="space-x-4">
                 
-                <button class="px-6 py-2 text-white bg-blue-600 rounded-md shadow hover:bg-blue-700 focus:ring-2 focus:ring-blue-400 focus:outline-none">
+                <button class="px-6 py-2 text-white bg-blue-600 rounded-md shadow hover:bg-blue-700 focus:ring-2 focus:ring-blue-400 focus:outline-none"
+                onClick={()=>{navigate("/donate")}}>
                     Donate
                 </button>
                 
