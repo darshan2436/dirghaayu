@@ -1,12 +1,14 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
-import { motion, AnimatePresence } from 'framer-motion';
-import Home from './Home.js';
-import Appointment from './Appointment.js';
-import Donation from './Donation.js';
-import Login from './Login.js';
-import Register from './Register.js';
-import AboutUs from './AboutUs.js';
+import React from "react";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+ import { motion, AnimatePresence } from 'framer-motion';
+import Home from "./Home.js";
+import Appointment from "./Appointment.js";
+import Donation from "./Donation.js";
+import Login from "./Login.js";
+import Register from "./Register.js";
+import RequestForm from "./RequestForm.jsx";
+import AboutUs from "./AboutUs.js";
+import BmiCalculator from './BmiCalculator.js';
 
 function App() {
   return (
@@ -32,6 +34,9 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/aboutus" element={<AboutUs />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/donorform" element={<DonorForm />} />
+          <Route path="/requestform" element={<RequestForm />} />
+          <Route path="/bmicalculator" element={<BmiCalculator />} />
         </Routes>
       </Router>
     </div>
