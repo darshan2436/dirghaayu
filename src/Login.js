@@ -1,24 +1,26 @@
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
 
-  // Regex for email validation
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  // Regex for name validation (only letters and spaces, at least 3 characters)
+  const nameRegex = /^[A-Za-z\s]{3,}$/;
 
   // Regex for password validation (minimum 8 characters, at least 1 uppercase, 1 lowercase, 1 number, 1 special character)
   const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
     setError('');
 
-    // Validate email and password
-    if (!emailRegex.test(email)) {
-      setError('Please enter a valid email address.');
+    // Validate name and password
+    if (!nameRegex.test(name)) {
+      setError('Please enter a valid name (at least 3 characters, no special characters).');
       return;
     }
 
@@ -42,10 +44,10 @@ function Login() {
           <form onSubmit={handleSubmit} className='flex flex-col'>
             {/* Email input */}
             <input
-              type="email"
-              placeholder="Enter Your Email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              type="text"
+              placeholder="Enter Your Name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
               className="my-3 border border-slate-300 py-2 rounded-md hover:bg-slate-50"
             />
 
@@ -63,7 +65,7 @@ function Login() {
               type="submit"
               className="bg-blue-500 px-10 py-2 my-3 rounded-md hover:bg-blue-600 font-bold"
             >
-              Log In
+              {loading ? 'Logging in ...':"Login"}
             </button>
 
             <button className="justify-center text-center text-sm text-green-500 hover:underline h-10">
