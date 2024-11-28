@@ -10,7 +10,7 @@ function App() {
   return (
     <div className="">
       <Router>
-        <nav className="m-5 ">
+        <nav className="m-5 position:sticky">
           <Link to="/" className="mx-4 hover:text-blue-500 text-xl ">Home</Link>
           <Link to="/appointment" className="mx-4 hover:text-blue-500 text-xl ">Appointment</Link>
           <Link to="/donation" className="mx-4 hover:text-blue-500 text-xl ">Donation</Link>
