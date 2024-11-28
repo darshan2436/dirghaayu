@@ -19,7 +19,6 @@ function App() {
           <Link to="/donation" className="mx-4 hover:text-blue-500 text-xl ">Donation</Link>
           <Link to="/login" className="mx-4 hover:text-blue-500 text-xl ">Login</Link>
           <Link to="/aboutus" className="mx-4 hover:text-blue-500 text-xl ">About Us</Link>
-
         </nav>
         <Routes>
           <Route path="/" element={<Home />} />
