@@ -32,7 +32,7 @@ function Login() {
   };
 
   return (
-    <div className="main flex-col">
+    <div className="main flex-col opacity-90">
       <div className="body flex items-center justify-center min-h-screen">
         <div className="Right flex flex-col my-20 p-10 border rounded-md bg-slate-200">
           <div className="left mx-10">
