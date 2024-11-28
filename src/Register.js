@@ -2,12 +2,12 @@ import React from 'react';
 
 function Register() {
     return (
-        <div className="flex items-center justify-center min-h-screen bg-gray-100">
-            <div className="bg-white p-8 rounded-lg shadow-md w-full max-w-md">
+        <div className="flex items-center justify-center min-h-screen bg-gray-200">
+            <div className="bg-stone-400 p-8 rounded-lg shadow-lg shadow-slate-950 w-full max-w-md shadow-2xl">
                 <div className="flex justify-center mb-4">
-                    <img src="path/to/your/logo.png" alt="Logo" className="h-20" />
+                    <img src="image/logo.jpg" alt="Logo" className="h-20 rounded-2xl" />
                 </div>
-                <h1 className="text-2xl font-bold text-center mb-6">Register for Dirghaayu</h1>
+                <h1 className="text-2xl font-bold text-center mb-6 hover:text-blue-900 text-yellow-900">Register for Dirghaayu</h1>
                 <form>
                     <div className="mb-4">
                         <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="username">
@@ -16,7 +16,7 @@ function Register() {
                         <input
                             type="text"
                             id="username"
-                            placeholder="Enter your username"
+                            placeholder=" Username"
                             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                             required
                         />
@@ -28,10 +28,30 @@ function Register() {
                         <input
                             type="email"
                             id="email"
-                            placeholder="Enter your email"
+                            placeholder=" Email"
                             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                             required
                         />
+                    </div>
+                    <div className="mb-4">
+                        <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="blood_group">
+                            Blood Group
+                        </label>
+                        <select
+                            id="blood_group"
+                            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                            required
+                        >
+                            <option value="" className="text-gray-700 text-sm font-bold">Select Blood Group</option>
+                            <option value="A+">A+</option>
+                            <option value="A-">A-</option>
+                            <option value="B+">B+</option>
+                            <option value="B-">B-</option>
+                            <option value="AB+">AB+</option>
+                            <option value="AB-">AB-</option>
+                            <option value="O+">O+</option>
+                            <option value="O-">O-</option>
+                        </select>
                     </div>
                     <div className="mb-4">
                         <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="password">
@@ -40,7 +60,7 @@ function Register() {
                         <input
                             type="password"
                             id="password"
-                            placeholder="Enter your password"
+                            placeholder=" Password"
                             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                             required
                         />
@@ -62,7 +82,7 @@ function Register() {
                             type="submit"
                             className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                         >
-                            Register
+                          Register  
                         </button>
                     </div>
                 </form>
