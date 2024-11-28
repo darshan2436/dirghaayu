@@ -1,6 +1,57 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 function Register() {
+    const [formData, setFormData] = useState({
+        username: '',
+        email: '',
+        bloodGroup: '',
+        dateOfBirth: '',
+        password: '',
+        confirmPassword: ''
+    });
+
+    const [error, setError] = useState('');
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData({
+            ...formData,
+            [name]: value
+        });
+    };
+
+    const validateEmail = (email) => {
+        const re = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+        return re.test(String(email).toLowerCase());
+    };
+
+    const validatePassword = (password) => {
+        return password.length >= 8;
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        if (formData.username === '' || formData.email === '' || formData.bloodGroup === '' || formData.dateOfBirth === '' || formData.password === '' || formData.confirmPassword === '') {
+            setError('All fields are required');
+            return;
+        }
+        if (!validateEmail(formData.email)) {
+            setError('Invalid email format');
+            return;
+        }
+        if (!validatePassword(formData.password)) {
+            setError('Password must be at least 8 characters long');
+            return;
+        }
+        if (formData.password !== formData.confirmPassword) {
+            setError('Passwords do not match');
+            return;
+        }
+        setError('');
+        // Handle form submission (e.g., API call)
+        console.log('Form submitted:', formData);
+    };
+
     return (
         <div className="flex items-center justify-center min-h-screen bg-gray-200">
             <div className="bg-stone-400 p-8 rounded-lg shadow-slate-950 w-full max-w-sm shadow-2xl">
@@ -8,7 +59,8 @@ function Register() {
                     <img src="image/logo.jpg" alt="Logo" className="h-20 rounded-2xl" />
                 </div>
                 <h1 className="text-2xl font-bold text-center mb-6 hover:text-blue-900 text-yellow-900">Register for Dirghaayu</h1>
-                <form>
+                {error && <div className="text-red-500 text-sm mb-4">{error}</div>}
+                <form onSubmit={handleSubmit}>
                     <div className="mb-4">
                         <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="username">
                             Username
@@ -16,7 +68,10 @@ function Register() {
                         <input
                             type="text"
                             id="username"
-                            placeholder=" Username"
+                            name="username"
+                            value={formData.username}
+                            onChange={handleChange}
+                            placeholder="Username"
                             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                             required
                         />
@@ -28,7 +83,10 @@ function Register() {
                         <input
                             type="email"
                             id="email"
-                            placeholder=" Email"
+                            name="email"
+                            value={formData.email}
+                            onChange={handleChange}
+                            placeholder="Email"
                             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                             required
                         />
@@ -39,6 +97,9 @@ function Register() {
                         </label>
                         <select
                             id="blood_group"
+                            name="bloodGroup"
+                            value={formData.bloodGroup}
+                            onChange={handleChange}
                             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                             required
                         >
@@ -54,13 +115,30 @@ function Register() {
                         </select>
                     </div>
                     <div className="mb-4">
+                        <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="date_of_birth">
+                            Date of Birth
+                        </label>
+                        <input
+                            type="date"
+                            id="date_of_birth"
+                            name="dateOfBirth"
+                            value={formData.dateOfBirth}
+                            onChange={handleChange}
+                            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                            required
+                        />
+                    </div>
+                    <div className="mb-4">
                         <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="password">
                             Password
                         </label>
                         <input
                             type="password"
                             id="password"
-                            placeholder=" Password"
+                            name="password"
+                            value={formData.password}
+                            onChange={handleChange}
+                            placeholder="Password"
                             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                             required
                         />
@@ -72,6 +150,9 @@ function Register() {
                         <input
                             type="password"
                             id="confirm-password"
+                            name="confirmPassword"
+                            value={formData.confirmPassword}
+                            onChange={handleChange}
                             placeholder="Confirm your password"
                             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                             required
@@ -82,7 +163,7 @@ function Register() {
                             type="submit"
                             className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                         >
-                          Register  
+                            Register
                         </button>
                     </div>
                 </form>
