@@ -25,8 +25,9 @@ function App() {
     
       <Router>
         <nav className="p-4 shadow-md ">
-          <div className="container text-black mx-auto flex justify-between items-center">
-            <div className="flex space-x-4">
+          <div className="container text-black mx-auto  flex justify-between items-center">
+            <div className="flex items-center space-x-4">
+            <img src="/image/logo.jpg " alt="Dirghaayu Logo" className="h-12 w-12 rounded-full" />
               <DropdownMenu label="Home" to="/" />
               <DropdownMenu label="Appointment" to="/appointment" />
               <DropdownMenu label="Donation" to="/donation" />

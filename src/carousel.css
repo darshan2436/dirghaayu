@@ -1,0 +1,36 @@
+.carousel .control-arrow {
+    background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    border: none;
+    font-size: 1 rem; /* Adjust the size of the chevron */
+    color: white;
+    padding: 10px;
+    border-radius: 50%; /* Make the arrows round */
+    transition: background 0.3s ease;
+  }
+  
+  .carousel .control-prev.control-arrow {
+    left: 2px;
+  }
+  
+  .carousel .control-next.control-arrow {
+    right: 2px;
+  }
+  
+  .carousel .control-arrow:hover {
+    background: rgba(0, 0, 0, 0.8);
+    transform: scale(1.1);
+ /* Darken background on hover */
+  }
+  
+  .carousel .control-prev.control-arrow:before {
+    content: '‹'; /* Left chevron */
+    font-size: 2rem;
+
+  }
+  
+  .carousel .control-next.control-arrow:before {
+    content: '›'; /* Right chevron */
+    font-size: 2rem;
+    
+  }
+  
