@@ -41,6 +41,7 @@ function Login() {
         localStorage.setItem('token', data.token);
         alert("Login successful!");
         navigate('/');
+        window.location.reload();
     } else {
         setError(data.message);  // Show error message
     }
@@ -52,7 +53,7 @@ function Login() {
   };
 
   return (
-    <div className="main flex-col opacity-95 bg-gradient-to-r from-green-300 via-blue-500 to-purple-600 ">
+    <div className="main flex-col opacity-95 bg-gradient-to-r from-green-200 via-blue-400 to-purple-200">
       <div className="body flex items-center justify-center min-h-screen">
         <div className="Right flex flex-col my-20 p-10 border rounded-md bg-slate-200  bg-opacity-60">
           <div className="left mx-10">
