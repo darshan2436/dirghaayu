@@ -1,45 +1,55 @@
-import React, { useState } from 'react';
-
-const queriesData = [
-  {
-    id: 1,
-    title: 'Organ Donation Process',
-    description: 'How does the organ donation process work?',
-    comments: [
-      { id: 1, user: { name: 'Alice' }, text: 'The process starts with registration as a donor.' },
-      { id: 2, user: { name: 'Bob' }, text: 'A medical evaluation is done to determine eligibility.' },
-    ],
-  },
-  {
-    id: 2,
-    title: 'Doctor Appointment Scheduling',
-    description: 'What is the best way to schedule an appointment with a specialist?',
-    comments: [
-      { id: 1, user: { name: 'Carol' }, text: 'You can use the online appointment scheduling system.' },
-      { id: 2, user: { name: 'Dave' }, text: 'It is recommended to book appointments well in advance.' },
-    ],
-  },
-];
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
 const Query = () => {
-  const [queries, setQueries] = useState(queriesData);
+  const [queries, setQueries] = useState([]);
   const [commentText, setCommentText] = useState('');
   const [activeQuery, setActiveQuery] = useState(null);
-  const currentUser = { name: 'Current User' }; // Replace with actual user info
 
-  const handleCommentSubmit = (queryId) => {
-    const newComment = { id: Date.now(), user: currentUser, text: commentText };
-    const updatedQueries = queries.map(query => {
-      if (query.id === queryId) {
-        return { ...query, comments: [...query.comments, newComment] };
+  // Fetch queries from the API on component mount
+  useEffect(() => {
+    const fetchQueries = async () => {
+      try {
+        const response = await axios.get("http://localhost:4000/api/queries/show");
+        setQueries(response.data); // assuming the response contains the queries data
+      } catch (error) {
+        console.error("Error fetching queries:", error);
       }
-      return query;
-    });
-    setQueries(updatedQueries);
-    setCommentText('');
-    setActiveQuery(null);
-  };
+    };
 
+    fetchQueries();
+  }, []); // Empty dependency array ensures it only runs once after component mounts
+
+  // Handle comment submission
+  const handleCommentSubmit = async (queryId) => {
+    try {
+      const response = await axios.post(
+        `http://localhost:4000/api/queries/${queryId}/add-comment`,
+        { comment: commentText }
+      );
+      console.log("Comment added successfully:", response.data);
+  
+      // Ensure the response contains the updated query with the new comment
+      const updatedQuery = response.data.query;  // Updated query object from the server
+  
+      // Update the local state with the updated query
+      setQueries((prevQueries) =>
+        prevQueries.map((query) =>
+          query._id === updatedQuery._id ? updatedQuery : query  // Update the specific query
+        )
+      );
+  
+      // Reset comment input after submission
+      setCommentText('');
+      setActiveQuery(null); // Close the comment input area
+    } catch (error) {
+      console.error("Error adding comment:", error.response || error.message);
+    }
+  };
+  
+  
+
+  // Handle cancel button
   const handleCancelClick = () => {
     setCommentText('');
     setActiveQuery(null);
@@ -51,25 +61,29 @@ const Query = () => {
       {queries.length > 0 ? (
         <ul className="space-y-4">
           {queries.map((query) => (
-            <li key={query.id} className="bg-white p-4 rounded-lg shadow-md">
+            <li key={query._id} className="bg-white p-4 rounded-lg shadow-md">
               <h3 className="text-xl font-semibold text-gray-800">{query.title}</h3>
-              <p className="text-gray-600 mt-2">{query.description}</p>
+              <p className="text-gray-600 mt-2">{query.query}</p> {/* Fix: Use query.query for description */}
               <div className="mt-4">
                 <h4 className="text-lg font-semibold text-gray-700">Comments</h4>
                 <ul className="space-y-2 mt-2">
-                  {query.comments.map((comment) => (
-                    <li key={comment.id} className="text-gray-600">
-                      <span className="font-bold">{comment.user.name}:</span> {comment.text}
-                    </li>
-                  ))}
+                  {query.comments && query.comments.length > 0 ? (
+                    query.comments.map((comment, index) => (
+                      <li key={index} className="text-gray-600">
+                       {new Date(comment.date).toLocaleString()} - {comment.comment}   
+                      </li>
+                    ))
+                  ) : (
+                    <p>No comments yet.</p>
+                  )}
                 </ul>
                 <button
                   className="mt-2 text-blue-500 hover:underline"
-                  onClick={() => setActiveQuery(query.id)}
+                  onClick={() => setActiveQuery(query._id)} // Fix: Use _id for query identifier
                 >
-                  {activeQuery === query.id ? 'Add Comment' : 'Add Comment'}
+                  {activeQuery === query._id ? 'Add Comment' : 'Add Comment'}
                 </button>
-                {activeQuery === query.id && (
+                {activeQuery === query._id && (
                   <div className="mt-4">
                     <textarea
                       value={commentText}
@@ -80,7 +94,7 @@ const Query = () => {
                     ></textarea>
                     <button
                       className="mt-2 px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-700"
-                      onClick={() => handleCommentSubmit(query.id)}
+                      onClick={() => handleCommentSubmit(query._id)} // Fix: Use _id
                     >
                       Submit Comment
                     </button>
