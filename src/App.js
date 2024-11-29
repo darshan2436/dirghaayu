@@ -1,5 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { AnimatePresence, motion } from "framer-motion";
+import { useState, useEffect } from 'react';
 import Home from "./Home.js";
 import Appointment from "./Appointment.js";
 import Donation from "./Donation.js";
@@ -11,8 +13,24 @@ import RequestForm from "./RequestForm.jsx";
 import BmiCalculator from "./BmiCalculator.js";
 import Admin from "./Admin.js";
 import AdminLogin from "./AdminLogin.js";  // Import AdminLogin component
+import Profile from "./Profile.js";
 
 function App() {
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+  // Check token on component mount
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    setIsAuthenticated(!!token); // Set true if token exists
+  }, []);
+
+  // Logout handler
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    setIsAuthenticated(false);
+    alert("Logged out successfully!");
+  };
+
   return (
     <div
       className="min-h-sc"
@@ -41,6 +59,22 @@ function App() {
               >
                 Login
               </Link>
+            <div>
+              {isAuthenticated ? (
+                <Link
+                  to="/profile"
+                  className="text-black text-xl py-2 px-4 rounded-full border border-white transition duration-300 ease-in-out transform hover:shadow-lg hover:shadow-red-500 hover:border-red-500"
+                >
+                  Profile
+                </Link>
+              ) : (
+                <Link
+                  to="/login"
+                  className="text-black text-xl py-2 px-4 rounded-full border border-white transition duration-300 ease-in-out transform hover:shadow-lg hover:shadow-yellow-500 hover:border-yellow-500"
+                >
+                  Login
+                </Link>
+              )}
             </div>
           </div>
         </nav>
@@ -56,6 +90,7 @@ function App() {
           <Route path="/bmicalculator" element={<BmiCalculator />} />
           <Route path="/admin" element={<Admin />} />
           <Route path="/admin-login" element={<AdminLogin />} />  {/* Added Admin Login route */}
+          <Route path="/profile" element={<Profile handleLogout={handleLogout} />}  />
         </Routes>
       </Router>
     </div>
