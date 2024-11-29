@@ -11,6 +11,7 @@ import DonorForm from "./DonorForm.jsx";
 import RequestForm from "./RequestForm.jsx";
 import BmiCalculator from "./BmiCalculator.js";
 import Queries from "./Queries.js";
+import Query from "./Query.js";
 import Admin from "./Admin.js";
 import AdminLogin from "./AdminLogin.js";
 import Profile from "./Profile.js";
@@ -49,7 +50,7 @@ function App() {
             <div className="flex items-center space-x-20">
               <img src="/image/logo.jpg" alt="Dirghaayu Logo" className="h-12 w-12 rounded-full border-2 border-white" />
               <NavLink to="/" label="Home" />
-              <NavLink to="/query" label="Query" />
+              <NavLink to="/queries" label="Queries" />
               <NavLink to="/appointment" label="Appointment" />
               <NavLink to="/donation" label="Donation" />
               <NavLink to="/aboutus" label="About Us" />
@@ -78,6 +79,7 @@ function App() {
           </div>
         </nav>
         <Routes>
+          
           <Route path="/" element={<Home />} />
           <Route path="/appointment" element={<Appointment />} />
           <Route path="/donation" element={<Donation />} />
@@ -91,7 +93,8 @@ function App() {
           <Route path="/admin-login" element={<AdminLogin />} />
           <Route path="/profile" element={<Profile handleLogout={handleLogout} />} />
           <Route path="/queries" element={<Queries/>} />
-          
+          <Route path="/query" element={<Query/>} />
+
         </Routes>
       </Router>
     </div>
