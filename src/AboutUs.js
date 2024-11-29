@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 function AboutUs() {
   return (
-    <div className="min-h-screen py-10 bg-gradient-to-r from-green-300 via-blue-500 to-purple-600">
+    <div className="min-h-screen py-10 bg-gradient-to-r from-green-200 via-blue-400 to-purple-200 bg-opacity-90">
 
       <header className="text-center -my-10 mb-12 bg-slate-900 opacity-80">
         <h1 className="text-5xl font-extrabold text-white ">About Us</h1>

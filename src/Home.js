@@ -8,7 +8,7 @@ import BmiCalculator from './BmiCalculator'; // Import BMI Calculator component
 
 function Home() {
   return (
-    <div className="flex-1 w-full flex flex-col items-center justify-center text-center px-4 bg-gradient-to-r from-green-300 via-blue-500 to-purple-600 py-10">
+    <div className="flex-1 w-full flex flex-col items-center justify-center text-center px-4 bg-gradient-to-r from-green-200 via-blue-400 to-purple-200 py-10">
       <Carousel
         showArrows={true}
         showThumbs={false}
@@ -130,7 +130,7 @@ function Home() {
             </div>
             <div>
               <h4 className="text-xl font-bold mb-4">Follow Us</h4>
-              <div className="flex space-x-4">
+              <div className="flex space-x-4 justify-center">
                 <a href="https://facebook.com" className="text-gray-300 hover:text-yellow-300">Facebook</a>
                 <a href="https://twitter.com" className="text-gray-300 hover:text-yellow-300">Twitter</a>
                 <a href="https://instagram.com" className="text-gray-300 hover:text-yellow-300">Instagram</a>
