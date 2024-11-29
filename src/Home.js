@@ -42,6 +42,7 @@ function Home() {
           </p>
         </div>
         <div className="flex flex-col items-center justify-center text-center px-4 py-8">
+        <img src="image/choose.jpg" alt="Dirghaayu Logo" className="mx-auto h-60 w-30 md:h-90 md:w-50 shadow-lg border-4 border-blue-500 transform hover:scale-105 transition-transform duration-300 opacity-80" />
           <h3 className="text-4xl font-bold text-white">Why Choose Us?</h3>
           <p className="text-white text-opacity-90 mt-2 max-w-2xl">
             Dirghaayu offers a user-friendly platform that integrates all essential hospital services into one seamless system. Our advanced technology ensures that your data is secure and accessible whenever you need it. We prioritize patient care and operational efficiency, making healthcare more accessible and effective for everyone.
@@ -56,19 +57,24 @@ function Home() {
             <h4 className="text-xl font-bold text-gray-800">Blood Donation</h4>
             <p className="text-gray-600 mt-2">
               Manage your blood donations effortlessly with Dirghaayu. Track donations, find donors, and participate in blood drives with ease.
+              <img src="image/blood.jpg" className="w-12 h-12 mt-4 mx-auto sm:w-16 sm:h-16 md:w-20 md:h-20 lg:w-24 lg:h-24" alt="blood donation" />
             </p>
+         
           </Link>
-          <Link to="/appointment" className="bg-white p-6 rounded-lg shadow hover:shadow-xl transition-shadow duration-300">
+          <Link to="/appointment" className="bg-white p-1 rounded-lg">
             <h4 className="text-xl font-bold text-gray-800">Appointment Booking</h4>
             <p className="text-gray-600 mt-2">
               Book and manage your medical appointments online. Get timely reminders and avoid long waits at the clinic.
+              <img src="image/appointment1.jpg" className="w-12 h-12 mt-4 mx-auto sm:w-16 sm:h-16 md:w-20 md:h-20 lg:w-24 lg:h-24" alt="appointment" />
             </p>
           </Link>
           <Link to="/bmicalculator" className="bg-white p-6 rounded-lg shadow hover:shadow-xl transition-shadow duration-300">
             <h4 className="text-xl font-bold text-gray-800">BMI Calculator</h4>
             <p className="text-gray-600 mt-2">
               Calculate your Body Mass Index (BMI) to stay on top of your health. It's quick and easy to use our BMI Calculator.
+              <img src="image/BMI.jpg" className="w-17 h-24 mt-2 mx-auto" alt="" />
             </p>
+            
           </Link>
           <div className="bg-white p-6 rounded-lg shadow">
             <h4 className="text-xl font-bold text-gray-800">24/7 Support</h4>
