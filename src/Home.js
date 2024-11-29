@@ -76,6 +76,9 @@ function Home() {
               Our dedicated support team is available round-the-clock to assist you with any queries or issues you may have.
             </p>
             <form className="mt-4">
+            <label htmlFor="query" className="block text-gray-700 font-bold mb-2">Title of Query:</label>
+            <input type="text" id="query" name="query" placeholder="Title Query" className="w-full px-4 py-2 mb-4 border rounded shadow focus:outline-none focus:ring-2 focus:ring-blue-500" />
+
               <label htmlFor="query" className="block text-gray-700 font-bold mb-2">Submit a Query:</label>
               <input type="text" id="query" name="query" placeholder="Your Query" className="w-full px-4 py-2 mb-4 border rounded shadow focus:outline-none focus:ring-2 focus:ring-blue-500" />
               <button type="submit" className="bg-blue-500 text-white font-bold py-2 px-4 rounded hover:bg-blue-700 transition-colors duration-300">Submit</button>
