@@ -97,11 +97,8 @@ function Home() {
             </p>
          
           </Link>
-          <Link
-            to="/appointment"
-            className="bg-white p-6 rounded-lg shadow hover:shadow-xl transition-shadow duration-300"
-          >
-          <Link to="/appointment" className="bg-white p-1 rounded-lg">
+          <Link to="/appointment" className="bg-white p-6 rounded-lg shadow hover:shadow-xl transition-shadow duration-300">
+          
             <h4 className="text-xl font-bold text-gray-800">Appointment Booking</h4>
             <p className="text-gray-600 mt-2">
               Book and manage your medical appointments online. Get timely reminders and avoid long waits at the clinic.
