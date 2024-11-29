@@ -35,7 +35,7 @@ function App() {
 
   return (
     <div
-      className="min-h-sc"
+      className="min-h-screen"
       style={{
         backgroundImage: "url('/image/home.jpg')",
         backgroundSize: "cover",
@@ -49,10 +49,10 @@ function App() {
             <div className="flex items-center space-x-20">
               <img src="/image/logo.jpg" alt="Dirghaayu Logo" className="h-12 w-12 rounded-full border-2 border-white" />
               <NavLink to="/" label="Home" />
+              <NavLink to="/query" label="Query" />
               <NavLink to="/appointment" label="Appointment" />
               <NavLink to="/donation" label="Donation" />
               <NavLink to="/aboutus" label="About Us" />
-              <NavLink to="/queries" label="Queries" />
 
             </div>
             <div className="flex space-x-4">
