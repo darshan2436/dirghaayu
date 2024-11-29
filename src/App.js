@@ -53,28 +53,23 @@ function App() {
             </div>
             <div className="flex space-x-4">
               <NavLink to="/admin-login" label="Admin" />  {/* Link to Admin Login */}
-              <Link
-                to="/login"
-                className="text-white text-xl py-2 px-4 rounded-full border border-white transition duration-300 ease-in-out transform hover:shadow-lg hover:shadow-yellow-500 hover:border-yellow-500"
-              >
-                Login
-              </Link>
-            <div>
-              {isAuthenticated ? (
-                <Link
-                  to="/profile"
-                  className="text-black text-xl py-2 px-4 rounded-full border border-white transition duration-300 ease-in-out transform hover:shadow-lg hover:shadow-red-500 hover:border-red-500"
-                >
-                  Profile
-                </Link>
-              ) : (
-                <Link
-                  to="/login"
-                  className="text-black text-xl py-2 px-4 rounded-full border border-white transition duration-300 ease-in-out transform hover:shadow-lg hover:shadow-yellow-500 hover:border-yellow-500"
-                >
-                  Login
-                </Link>
-              )}
+              <div>
+                {isAuthenticated ? (
+                  <Link
+                    to="/profile"
+                    className="text-white text-xl py-2 px-4 rounded-full border border-white transition duration-300 ease-in-out transform hover:shadow-lg hover:shadow-red-500 hover:border-red-500"
+                  >
+                    Profile
+                  </Link>
+                ) : (
+                  <Link
+                    to="/login"
+                    className="text-white text-xl py-2 px-4 rounded-full border border-white transition duration-300 ease-in-out transform hover:shadow-lg hover:shadow-yellow-500 hover:border-yellow-500"
+                  >
+                    Login
+                  </Link>
+                )}
+              </div>
             </div>
           </div>
         </nav>
@@ -94,8 +89,9 @@ function App() {
         </Routes>
       </Router>
     </div>
-  );
+  )
 }
+
 
 function NavLink({ to, label }) {
   return (
