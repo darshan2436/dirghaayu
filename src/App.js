@@ -35,7 +35,7 @@ function App() {
 
   return (
     <div
-      className="min-h-sc"
+      className="min-h-screen"
       style={{
         backgroundImage: "url('/image/home.jpg')",
         backgroundSize: "cover",
