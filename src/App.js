@@ -15,6 +15,7 @@ import Query from "./Query.js";
 import Admin from "./Admin.js";
 import AdminLogin from "./AdminLogin.js";
 import Profile from "./Profile.js";
+import Footer from "./Footer.js";
 
 
 
@@ -94,7 +95,7 @@ function App() {
           <Route path="/profile" element={<Profile handleLogout={handleLogout} />} />
           <Route path="/queries" element={<Queries/>} />
           <Route path="/query" element={<Query/>} />
-
+<Route path="/footer" element={<Footer/>} />
         </Routes>
       </Router>
     </div>
