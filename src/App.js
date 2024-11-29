@@ -11,9 +11,9 @@ import AboutUs from "./AboutUs.js";
 import DonorForm from "./DonorForm.jsx";
 import RequestForm from "./RequestForm.jsx";
 import BmiCalculator from "./BmiCalculator.js";
+import Admin from "./Admin.js";
+import AdminLogin from "./AdminLogin.js";  // Import AdminLogin component
 import Profile from "./Profile.js";
-
-
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -32,23 +32,33 @@ function App() {
   };
 
   return (
-    
-    <div className="min-h-sc"
-    style={{ backgroundImage: "url('/image/home.jpg')",
-     backgroundSize: "cover",
-     backgroundRepeat: "no-repeat",
-     backgroundPosition: "center", }}>
-    
+    <div
+      className="min-h-sc"
+      style={{
+        backgroundImage: "url('/image/home.jpg')",
+        backgroundSize: "cover",
+        backgroundRepeat: "no-repeat",
+        backgroundPosition: "center",
+      }}
+    >
       <Router>
-        <nav className="p-4 shadow-md ">
-          <div className="container text-black mx-auto  flex justify-between items-center">
+        <nav className="p-4 shadow-md bg-gray-950">
+          <div className="container text-black mx-auto flex justify-between items-center">
             <div className="flex items-center space-x-4">
-            <img src="/image/logo.jpg " alt="Dirghaayu Logo" className="h-12 w-12 rounded-full" />
-              <DropdownMenu label="Home" to="/" />
-              <DropdownMenu label="Appointment" to="/appointment" />
-              <DropdownMenu label="Donation" to="/donation" />
-              <DropdownMenu label="About Us" to="/aboutus" />
+              <img src="/image/logo.jpg" alt="Dirghaayu Logo" className="h-12 w-12 rounded-full border-2 border-white" />
+              <NavLink to="/" label="Home" />
+              <NavLink to="/appointment" label="Appointment" />
+              <NavLink to="/donation" label="Donation" />
+              <NavLink to="/aboutus" label="About Us" />
             </div>
+            <div className="flex space-x-4">
+              <NavLink to="/admin-login" label="Admin" />  {/* Link to Admin Login */}
+              <Link
+                to="/login"
+                className="text-white text-xl py-2 px-4 rounded-full border border-white transition duration-300 ease-in-out transform hover:shadow-lg hover:shadow-yellow-500 hover:border-yellow-500"
+              >
+                Login
+              </Link>
             <div>
               {isAuthenticated ? (
                 <Link
@@ -74,10 +84,12 @@ function App() {
           <Route path="/donation" element={<Donation />} />
           <Route path="/login" element={<Login />} />
           <Route path="/aboutus" element={<AboutUs />} />
-          <Route path="/donorform" element={<DonorForm />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/donorform" element={<DonorForm />} />
           <Route path="/requestform" element={<RequestForm />} />
           <Route path="/bmicalculator" element={<BmiCalculator />} />
+          <Route path="/admin" element={<Admin />} />
+          <Route path="/admin-login" element={<AdminLogin />} />  {/* Added Admin Login route */}
           <Route path="/profile" element={<Profile handleLogout={handleLogout} />}  />
         </Routes>
       </Router>
@@ -85,36 +97,12 @@ function App() {
   );
 }
 
-function DropdownMenu({ label, to }) {
-  const [isOpen, setIsOpen] = React.useState(false);
-
+function NavLink({ to, label }) {
   return (
-    <div 
-      className="relative group"
-      onMouseEnter={() => setIsOpen(true)} 
-      onMouseLeave={() => setIsOpen(false)}
-    >
-      <Link to={to} className="text-black hover:text-blue-500 text-xl relative inline-block">
-        {label}
-        <span className="absolute left-0 bottom-0 w-full h-0.5 bg-yellow-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
-      </Link>
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            className="absolute left-0 mt-2 w-48 bg-white shadow-lg rounded-md"
-          >
-            <div className="p-2">
-              <Link to={`${to}/sub1`} className="block px-4 py-2 hover:bg-gray-200">Submenu 1</Link>
-              <Link to={`${to}/sub2`} className="block px-4 py-2 hover:bg-gray-200">Submenu 2</Link>
-              <Link to={`${to}/sub3`} className="block px-4 py-2 hover:bg-gray-200">Submenu 3</Link>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </div>
+    <Link to={to} className="text-white text-xl relative inline-block group">
+      {label}
+      <span className="absolute left-0 bottom-0 w-full h-0.5 bg-yellow-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
+    </Link>
   );
 }
 
