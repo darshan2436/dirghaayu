@@ -10,7 +10,7 @@ import AboutUs from "./AboutUs.js";
 import DonorForm from "./DonorForm.jsx";
 import RequestForm from "./RequestForm.jsx";
 import BmiCalculator from "./BmiCalculator.js";
-import Query from "./Query.js";
+import Queries from "./Queries.js";
 import Admin from "./Admin.js";
 import AdminLogin from "./AdminLogin.js";
 import Profile from "./Profile.js";
@@ -52,7 +52,7 @@ function App() {
               <NavLink to="/appointment" label="Appointment" />
               <NavLink to="/donation" label="Donation" />
               <NavLink to="/aboutus" label="About Us" />
-              <NavLink to="/query" label="Query" />
+              <NavLink to="/queries" label="Queries" />
 
             </div>
             <div className="flex space-x-4">
@@ -90,7 +90,7 @@ function App() {
           <Route path="/admin" element={<Admin />} />
           <Route path="/admin-login" element={<AdminLogin />} />
           <Route path="/profile" element={<Profile handleLogout={handleLogout} />} />
-          <Route path="/query" element={<Query/>} />
+          <Route path="/queries" element={<Queries/>} />
           
         </Routes>
       </Router>
