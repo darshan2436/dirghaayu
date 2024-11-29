@@ -21,8 +21,8 @@ function App() {
      backgroundPosition: "center", }}>
     
       <Router>
-        <nav className="p-4 shadow-md">
-          <div className="container mx-auto flex justify-between items-center">
+        <nav className="p-4 shadow-md ">
+          <div className="container text-black mx-auto flex justify-between items-center">
             <div className="flex space-x-4">
               <DropdownMenu label="Home" to="/" />
               <DropdownMenu label="Appointment" to="/appointment" />
@@ -30,7 +30,7 @@ function App() {
               <DropdownMenu label="About Us" to="/aboutus" />
             </div>
             <div>
-              <Link to="/login" className="text-white text-xl py-2 px-4 rounded-full border border-white transition duration-300 ease-in-out transform hover:shadow-lg hover:shadow-yellow-500 hover:border-yellow-500">Login</Link>
+              <Link to="/login" className="text-black text-xl py-2 px-4 rounded-full border border-white transition duration-300 ease-in-out transform hover:shadow-lg hover:shadow-yellow-500 hover:border-yellow-500">Login</Link>
             </div>
           </div>
         </nav>
@@ -59,7 +59,7 @@ function DropdownMenu({ label, to }) {
       onMouseEnter={() => setIsOpen(true)} 
       onMouseLeave={() => setIsOpen(false)}
     >
-      <Link to={to} className="text-white text-xl relative inline-block">
+      <Link to={to} className="text-black hover:text-blue-500 text-xl relative inline-block">
         {label}
         <span className="absolute left-0 bottom-0 w-full h-0.5 bg-yellow-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
       </Link>
