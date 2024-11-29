@@ -7,14 +7,14 @@ function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   // Regex for email validation
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-  // Regex for password validation (minimum 8 characters, at least 1 uppercase, 1 lowercase, 1 number, 1 special character)
-  const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
 
@@ -24,10 +24,28 @@ function Login() {
       return;
     }
 
-    if (!passwordRegex.test(password)) {
-      setError('Password must be at least 8 characters long, include an uppercase letter, a number, and a special character.');
-      return;
+    setLoading(true);
+    setError('');
+
+    // Send login data to backend
+    const response = await fetch('http://localhost:4000/api/users/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password }),
+    });
+
+    const data = await response.json();
+
+    if (response.ok) {
+        // If login successful, store the token
+        localStorage.setItem('token', data.token);
+        alert("Login successful!");
+        navigate('/');
+    } else {
+        setError(data.message);  // Show error message
     }
+
+    setLoading(false);
 
     // If everything is valid, proceed with form submission
     console.log('Form submitted successfully');
@@ -65,7 +83,7 @@ function Login() {
               type="submit"
               className="bg-blue-500 px-10 py-2 my-3 rounded-md hover:bg-blue-600 font-bold"
             >
-              Log In
+              {loading ? 'Logging in ...':"Login"}
             </button>
 
             <button className="justify-center text-center text-sm text-green-500 hover:underline h-10">

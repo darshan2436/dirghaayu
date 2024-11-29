@@ -1,5 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { AnimatePresence, motion } from "framer-motion";
 import Home from "./Home.js";
 import Appointment from "./Appointment.js";
 import Donation from "./Donation.js";
@@ -7,7 +8,7 @@ import Login from "./Login.js";
 import Register from "./Register.js";
 import AboutUs from "./AboutUs.js";
 import DonorForm from "./DonorForm.jsx";
-import image from "./Assets/background.jpg";
+import RequestForm from "./RequestForm.jsx";
 
 
 
@@ -41,8 +42,9 @@ function App() {
           <Route path="/donation" element={<Donation />} />
           <Route path="/login" element={<Login />} />
           <Route path="/aboutus" element={<AboutUs />} />
+          <Route path="/donorform" element={<DonorForm />} />
           <Route path="/register" element={<Register />} />
-          
+          <Route path="/requestform" element={<RequestForm />} />
 
         </Routes>
       </Router>
