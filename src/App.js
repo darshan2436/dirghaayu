@@ -14,22 +14,33 @@ import Admin from "./Admin.js";
 import AdminLogin from "./AdminLogin.js";
 import Profile from "./Profile.js";
 import Footer from "./Footer.js";
+import ProtectedRoute from "./ProtectedRoute.js";
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [isOpen, setIsOpen] = useState(false); // For toggling the navbar in mobile view
+  const [isAdminAuthenticated, setIsAdminAuthenticated] = useState(false); // For admin authentication
+  const [isOpen, setIsOpen] = useState(false);
 
   // Check token on component mount
   useEffect(() => {
-    const token = localStorage.getItem("token");
-    setIsAuthenticated(!!token); // Set true if token exists
+    const userToken = localStorage.getItem("token");
+    const adminToken = localStorage.getItem("adminToken");
+    setIsAuthenticated(!!userToken); // Set true if user token exists
+    setIsAdminAuthenticated(!!adminToken); // Set true if admin token exists
   }, []);
 
-  // Logout handler
+  // Logout handler for regular user
   const handleLogout = () => {
     localStorage.removeItem("token");
     setIsAuthenticated(false);
     alert("Logged out successfully!");
+  };
+
+  // Logout handler for admin
+  const handleAdminLogout = () => {
+    localStorage.removeItem("adminToken");
+    setIsAdminAuthenticated(false);
+    alert("Admin logged out successfully!");
   };
 
   return (
@@ -56,8 +67,9 @@ function App() {
               </div>
             </div>
             <div className="flex space-x-4">
-              <NavLink to="/admin-login" label="Admin" />
+              <NavLink to={isAdminAuthenticated? "/admin" : "/admin-login"} label="Admin" />
               <div>
+                
                 {isAuthenticated ? (
                   <Link
                     to="/profile"
@@ -74,6 +86,14 @@ function App() {
                   </Link>
                 )}
               </div>
+              {isAdminAuthenticated && (
+                <button
+                  onClick={handleAdminLogout}
+                  className="text-white text-xl py-2 px-4 rounded-full border border-white transition duration-300 ease-in-out transform hover:shadow-lg hover:shadow-yellow-500 hover:border-yellow-500"
+                >
+                  Admin Logout
+                </button>
+              )}
             </div>
             <button
               className="md:hidden text-white focus:outline-none"
@@ -122,11 +142,21 @@ function App() {
           <Route path="/donorform" element={<DonorForm />} />
           <Route path="/requestform" element={<RequestForm />} />
           <Route path="/bmicalculator" element={<BmiCalculator />} />
-          <Route path="/admin" element={<Admin />} />
-          <Route path="/admin-login" element={<AdminLogin />} />
+          <Route
+                path="/admin-login"
+                element={<AdminLogin setIsAdminAuthenticated={setIsAdminAuthenticated} />} 
+          />
           <Route path="/profile" element={<Profile handleLogout={handleLogout} />} />
-          <Route path="/query" element={<Query/>} />
-          <Route path="/footer" element={<Footer/>} />
+          <Route path="/query" element={<Query />} />
+          <Route path="/footer" element={<Footer />} />
+          <Route
+            path="/admin"
+            element={
+              <ProtectedRoute isAuthenticated={isAdminAuthenticated}>
+                <Admin />
+              </ProtectedRoute>
+            }
+          />
         </Routes>
       </Router>
     </div>
