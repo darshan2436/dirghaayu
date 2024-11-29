@@ -2,7 +2,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Carousel } from 'react-responsive-carousel';
+import './carousel.css';
 import 'react-responsive-carousel/lib/styles/carousel.min.css'; // Import carousel styles
+import BmiCalculator from './BmiCalculator'; // Import BMI Calculator component
 
 function Home() {
   return (
@@ -62,6 +64,12 @@ function Home() {
               Book and manage your medical appointments online. Get timely reminders and avoid long waits at the clinic.
             </p>
           </Link>
+          <Link to="/bmicalculator" className="bg-white p-6 rounded-lg shadow hover:shadow-xl transition-shadow duration-300">
+            <h4 className="text-xl font-bold text-gray-800">BMI Calculator</h4>
+            <p className="text-gray-600 mt-2">
+              Calculate your Body Mass Index (BMI) to stay on top of your health. It's quick and easy to use our BMI Calculator.
+            </p>
+          </Link>
           <div className="bg-white p-6 rounded-lg shadow">
             <h4 className="text-xl font-bold text-gray-800">24/7 Support</h4>
             <p className="text-gray-600 mt-2">
@@ -86,7 +94,7 @@ function Home() {
         </Link>
       </section>
 
-      <footer className="w-full bg-blue-600 text-white py-8 text-center mt-12">
+      <footer className="w-full bg-gray-950 text-white py-8 text-center mt-12">
         <div className="container mx-auto px-6">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div>
