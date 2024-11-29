@@ -9,6 +9,8 @@ import AboutUs from "./AboutUs.js";
 import DonorForm from "./DonorForm.jsx";
 import RequestForm from "./RequestForm.jsx";
 import BmiCalculator from "./BmiCalculator.js";
+import Admin from "./Admin.js";
+import AdminLogin from "./AdminLogin.js";  // Import AdminLogin component
 
 function App() {
   return (
@@ -31,7 +33,8 @@ function App() {
               <NavLink to="/donation" label="Donation" />
               <NavLink to="/aboutus" label="About Us" />
             </div>
-            <div>
+            <div className="flex space-x-4">
+              <NavLink to="/admin-login" label="Admin" />  {/* Link to Admin Login */}
               <Link
                 to="/login"
                 className="text-white text-xl py-2 px-4 rounded-full border border-white transition duration-300 ease-in-out transform hover:shadow-lg hover:shadow-yellow-500 hover:border-yellow-500"
@@ -47,10 +50,12 @@ function App() {
           <Route path="/donation" element={<Donation />} />
           <Route path="/login" element={<Login />} />
           <Route path="/aboutus" element={<AboutUs />} />
-          <Route path="/donorform" element={<DonorForm />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/donorform" element={<DonorForm />} />
           <Route path="/requestform" element={<RequestForm />} />
           <Route path="/bmicalculator" element={<BmiCalculator />} />
+          <Route path="/admin" element={<Admin />} />
+          <Route path="/admin-login" element={<AdminLogin />} />  {/* Added Admin Login route */}
         </Routes>
       </Router>
     </div>
