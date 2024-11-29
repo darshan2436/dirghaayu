@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 function DonorForm() {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
-    name: "",
+    userName: "",
     bloodGroup: "",
     location: "",
     phone: "",
@@ -37,9 +39,37 @@ function DonorForm() {
   // Handle form submit
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Donor Form Data:", formData);
-    // Add logic to submit form data to backend (e.g., using axios)
+    
+    axios
+      .post("http://localhost:4000/api/donor/register", formData)
+      .then((response) => {
+        console.log("Donor registered successfully:", response.data);
+        alert("Donor registered successfully!");
+        setFormData({
+          userName: "",
+          bloodGroup: "",
+          location: "",
+          phone: "",
+        }); // Clear the form after successful submission
+        navigate("/");
+      })
+      .catch((error) => {
+        if (error.response) {
+          // Server responded with a status other than 2xx
+          console.error("Error registering donor:", error.response.data);
+          alert(`Error: ${error.response.data.error || "Internal Server Error"}`);
+        } else if (error.request) {
+          // No response received
+          console.error("No response from server:", error.request);
+          alert("No response from the server. Please try again later.");
+        } else {
+          // Other errors
+          console.error("Error:", error.message);
+          alert("An unexpected error occurred.");
+        }
+      });
   };
+  
 
   return (
     <div className="bg-gradient-to-r from-green-200 via-blue-400 to-purple-200 py-24">
@@ -56,8 +86,8 @@ function DonorForm() {
           </label>
           <input
             type="text"
-            id="name"
-            name="name"
+            id="userName"
+            name="userName"
             className="border rounded px-2 py-1 mb-4 w-full"
             value={formData.name}
             onChange={handleChange}
