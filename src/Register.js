@@ -101,12 +101,12 @@ function Register() {
     };
 
     return (
-        <div className="flex items-center justify-center min-h-screen bg-gray-200">
-            <div className="bg-stone-400 p-8 rounded-lg shadow-slate-950 w-full max-w-sm shadow-2xl">
+        <div className="flex items-center justify-center min-h-screen bg-gradient-to-r from-green-300 via-blue-500 to-purple-600 ">
+            <div className="bg-stone-300  opacity-85 p-8 rounded-lg shadow-slate-700 w-full max-w-sm shadow-black">
                 <div className="flex justify-center mb-4">
                     <img src={logo} alt="Logo" className="h-20 rounded-2xl" />
                 </div>
-                <h1 className="text-2xl font-bold text-center mb-6 hover:text-blue-900 text-yellow-900">Register for Dirghaayu</h1>
+                <h1 className="text-2xl font-bold text-center mb-6 text-blue-900 ">Register for Dirghaayu</h1>
                 {error && <div className="text-red-500 text-sm mb-4">{error}</div>}
                 <form onSubmit={handleSubmit}>
                     <div className="mb-4">
