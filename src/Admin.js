@@ -6,9 +6,10 @@ function Admin() {
 
   useEffect(() => {
     // Fetch the list of appointments from the backend
-    axios.get("http://localhost:4000/api/appointments")
+    axios
+      .get("http://localhost:4000/api/appointment/showappointment")
       .then((response) => {
-        setAppointments(response.data);
+        setAppointments(response.data); // Store the appointment data
       })
       .catch((error) => {
         console.error("Error fetching appointments:", error);
@@ -35,12 +36,12 @@ function Admin() {
               {appointments.length > 0 ? (
                 appointments.map((appointment, index) => (
                   <tr key={index} className="text-center">
-                    <td className="py-2 px-4 border">{appointment.name}</td>
+                    <td className="py-2 px-4 border">{appointment.fullName}</td>
                     <td className="py-2 px-4 border">{appointment.hospital}</td>
                     <td className="py-2 px-4 border">{appointment.doctor}</td>
                     <td className="py-2 px-4 border">{appointment.date}</td>
                     <td className="py-2 px-4 border">{appointment.time}</td>
-                    <td className="py-2 px-4 border">{appointment.notes}</td>
+                    <td className="py-2 px-4 border">{appointment.reason}</td>
                   </tr>
                 ))
               ) : (

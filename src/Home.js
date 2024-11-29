@@ -35,7 +35,7 @@ function Home() {
         }}
       >
         <div className="flex flex-col items-center justify-center text-center px-4 py-8">
-          <img src="image/logo.jpg" alt="Dirghaayu Logo" className="mx-auto h-48 w-48 md:h-56 md:w-56 shadow-lg border-4 border-blue-500 transform hover:scale-105 transition-transform duration-300" />
+        <img src="image/homepage.png" alt="Dirghaayu Logo" className="mx-auto h-60 w-30 md:h-90 md:w-50 shadow-lg border-4 border-blue-500 transform hover:scale-105 transition-transform duration-300" />
           <h2 className="text-4xl font-bold text-white mt-4">Welcome to Dirghaayu</h2>
           <p className="text-white text-opacity-90 mt-4 max-w-2xl">
             Dirghaayu is your comprehensive hospital management system that simplifies blood donation, appointment booking, and more. We aim to provide seamless healthcare services to patients and donors.
