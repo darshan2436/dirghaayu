@@ -41,9 +41,9 @@ function App() {
       }}
     >
       <Router>
-        <nav className="p-4 shadow-md bg-gray-950">
+        <nav className="p-4 shadow-md bg-gray-950 ">
           <div className="container text-black mx-auto flex justify-between items-center">
-            <div className="flex items-center space-x-4">
+            <div className="flex items-center space-x-20">
               <img src="/image/logo.jpg" alt="Dirghaayu Logo" className="h-12 w-12 rounded-full border-2 border-white" />
               <NavLink to="/" label="Home" />
               <NavLink to="/appointment" label="Appointment" />
@@ -56,7 +56,7 @@ function App() {
                 {isAuthenticated ? (
                   <Link
                     to="/profile"
-                    className="text-white text-xl py-2 px-4 rounded-full border border-white transition duration-300 ease-in-out transform hover:shadow-lg hover:shadow-red-500 hover:border-red-500"
+                    className="text-white text-xl py-2 px-4 rounded-full border border-white transition duration-300 ease-in-out transform hover:shadow-lg hover:shadow-yellow-500 hover:border-yellow-500"
                   >
                     Profile
                   </Link>
