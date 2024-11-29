@@ -102,7 +102,7 @@ function Register() {
 
     return (
         <div className="flex items-center justify-center min-h-screen bg-gradient-to-r from-green-300 via-blue-500 to-purple-600 ">
-            <div className="bg-stone-300  opacity-85 p-8 rounded-lg shadow-slate-700 w-full max-w-sm shadow-black">
+            <div className="bg-stone-300  opacity-85 p-8 rounded-lg  w-full max-w-sm shadow-black">
                 <div className="flex justify-center mb-4">
                     <img src={logo} alt="Logo" className="h-20 rounded-2xl" />
                 </div>
