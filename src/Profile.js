@@ -11,10 +11,9 @@ const Profile = ({ handleLogout }) => {
 
   return (
     <div className="profile-page">
-      <h1>Welcome to Your Profile</h1>
       <button
         onClick={logout}
-        className="mt-4 px-6 py-2 bg-red-500 text-white rounded hover:bg-red-600 transition"
+        className="mt-4 px-6 py-2 bg-red-500 text-white text-right rounded hover:bg-red-600 transition"
       >
         Logout
       </button>
