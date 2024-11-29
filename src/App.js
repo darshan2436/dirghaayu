@@ -9,6 +9,7 @@ import Register from "./Register.js";
 import AboutUs from "./AboutUs.js";
 import DonorForm from "./DonorForm.jsx";
 import RequestForm from "./RequestForm.jsx";
+import BmiCalculator from "./BmiCalculator.js";
 
 
 
@@ -45,7 +46,7 @@ function App() {
           <Route path="/donorform" element={<DonorForm />} />
           <Route path="/register" element={<Register />} />
           <Route path="/requestform" element={<RequestForm />} />
-
+          <Route path="/bmicalculator" element={<BmiCalculator />} />
         </Routes>
       </Router>
     </div>
