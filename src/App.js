@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-import { AnimatePresence, motion } from "framer-motion";
+// import { AnimatePresence, motion } from "framer-motion";
 import Home from "./Home.js";
 import Appointment from "./Appointment.js";
 import Donation from "./Donation.js";
@@ -25,8 +25,9 @@ function App() {
     
       <Router>
         <nav className="p-4 shadow-md ">
-          <div className="container text-black mx-auto flex justify-between items-center">
-            <div className="flex space-x-4">
+          <div className="container text-black mx-auto  flex justify-between items-center">
+            <div className="flex items-center space-x-4">
+            <img src="/image/logo.jpg " alt="Dirghaayu Logo" className="h-12 w-12 rounded-full" />
               <DropdownMenu label="Home" to="/" />
               <DropdownMenu label="Appointment" to="/appointment" />
               <DropdownMenu label="Donation" to="/donation" />
@@ -66,7 +67,7 @@ function DropdownMenu({ label, to }) {
         {label}
         <span className="absolute left-0 bottom-0 w-full h-0.5 bg-yellow-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
       </Link>
-      <AnimatePresence>
+      {/* <AnimatePresence>
         {isOpen && (
           <motion.div
             initial={{ opacity: 0, y: -10 }}
@@ -81,7 +82,7 @@ function DropdownMenu({ label, to }) {
             </div>
           </motion.div>
         )}
-      </AnimatePresence>
+      </AnimatePresence> */}
     </div>
   );
 }
