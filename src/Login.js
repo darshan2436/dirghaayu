@@ -41,6 +41,7 @@ function Login() {
         localStorage.setItem('token', data.token);
         alert("Login successful!");
         navigate('/');
+        window.location.reload();
     } else {
         setError(data.message);  // Show error message
     }

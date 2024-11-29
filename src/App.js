@@ -1,6 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-import { AnimatePresence, motion } from "framer-motion";
+import { BrowserRouter as Router, Routes, Route, Link, NavLink as RouterNavLink } from "react-router-dom";
 import { useState, useEffect } from 'react';
 import Home from "./Home.js";
 import Appointment from "./Appointment.js";
@@ -12,7 +11,7 @@ import DonorForm from "./DonorForm.jsx";
 import RequestForm from "./RequestForm.jsx";
 import BmiCalculator from "./BmiCalculator.js";
 import Admin from "./Admin.js";
-import AdminLogin from "./AdminLogin.js";  // Import AdminLogin component
+import AdminLogin from "./AdminLogin.js";
 import Profile from "./Profile.js";
 
 function App() {
@@ -52,7 +51,7 @@ function App() {
               <NavLink to="/aboutus" label="About Us" />
             </div>
             <div className="flex space-x-4">
-              <NavLink to="/admin-login" label="Admin" />  {/* Link to Admin Login */}
+              <NavLink to="/admin-login" label="Admin" />
               <div>
                 {isAuthenticated ? (
                   <Link
@@ -84,21 +83,20 @@ function App() {
           <Route path="/requestform" element={<RequestForm />} />
           <Route path="/bmicalculator" element={<BmiCalculator />} />
           <Route path="/admin" element={<Admin />} />
-          <Route path="/admin-login" element={<AdminLogin />} />  {/* Added Admin Login route */}
-          <Route path="/profile" element={<Profile handleLogout={handleLogout} />}  />
+          <Route path="/admin-login" element={<AdminLogin />} />
+          <Route path="/profile" element={<Profile handleLogout={handleLogout} />} />
         </Routes>
       </Router>
     </div>
-  )
+  );
 }
-
 
 function NavLink({ to, label }) {
   return (
-    <Link to={to} className="text-white text-xl relative inline-block group">
+    <RouterNavLink to={to} className="text-white text-xl relative inline-block group">
       {label}
       <span className="absolute left-0 bottom-0 w-full h-0.5 bg-yellow-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
-    </Link>
+    </RouterNavLink>
   );
 }
 
