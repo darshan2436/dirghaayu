@@ -9,7 +9,6 @@ import AboutUs from "./AboutUs.js";
 import DonorForm from "./DonorForm.jsx";
 import RequestForm from "./RequestForm.jsx";
 import BmiCalculator from "./BmiCalculator.js";
-import Queries from "./Queries.js";
 import Query from "./Query.js";
 import Admin from "./Admin.js";
 import AdminLogin from "./AdminLogin.js";
@@ -50,7 +49,7 @@ function App() {
               <img src="/image/logo.jpg" alt="Dirghaayu Logo" className="h-12 w-12 rounded-full border-2 border-white" />
               <div className="hidden md:flex space-x-8">
                 <NavLink to="/" label="Home" />
-                <NavLink to="/queries" label="Queries" />
+                <NavLink to="/query" label="Query" />
                 <NavLink to="/appointment" label="Appointment" />
                 <NavLink to="/donation" label="Donation" />
                 <NavLink to="/aboutus" label="About Us" />
@@ -88,7 +87,7 @@ function App() {
           {isOpen && (
             <div className="md:hidden flex flex-col space-y-4 mt-4">
               <NavLink to="/" label="Home" onClick={() => setIsOpen(false)} />
-              <NavLink to="/queries" label="Queries" onClick={() => setIsOpen(false)} />
+              <NavLink to="/query" label="Query" onClick={() => setIsOpen(false)} />
               <NavLink to="/appointment" label="Appointment" onClick={() => setIsOpen(false)} />
               <NavLink to="/donation" label="Donation" onClick={() => setIsOpen(false)} />
               <NavLink to="/aboutus" label="About Us" onClick={() => setIsOpen(false)} />
@@ -126,7 +125,6 @@ function App() {
           <Route path="/admin" element={<Admin />} />
           <Route path="/admin-login" element={<AdminLogin />} />
           <Route path="/profile" element={<Profile handleLogout={handleLogout} />} />
-          <Route path="/queries" element={<Queries/>} />
           <Route path="/query" element={<Query/>} />
           <Route path="/footer" element={<Footer/>} />
         </Routes>
