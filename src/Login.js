@@ -56,7 +56,7 @@ function Login() {
       <div className="body flex items-center justify-center min-h-screen">
         <div className="Right flex flex-col my-20 p-10 border rounded-md bg-slate-200  bg-opacity-60">
           <div className="left mx-10">
-            <img src={logo} className="mx-10 my-11 rounded-2xl h-36" alt="Logo" />
+            <img src={logo} className="mx-11 my-11 rounded-full h-36 w-36" alt="Logo" />
           </div>
 
           <form onSubmit={handleSubmit} className='flex flex-col'>
