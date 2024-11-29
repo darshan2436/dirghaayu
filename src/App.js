@@ -30,7 +30,7 @@ function App() {
               <DropdownMenu label="About Us" to="/aboutus" />
             </div>
             <div>
-              <Link to="/login" className="text-white hover:text-yellow-500 text-xl">Login</Link>
+              <Link to="/login" className="text-white text-xl py-2 px-4 rounded-full border border-white transition duration-300 ease-in-out transform hover:shadow-lg hover:shadow-yellow-500 hover:border-yellow-500">Login</Link>
             </div>
           </div>
         </nav>
@@ -55,11 +55,14 @@ function DropdownMenu({ label, to }) {
 
   return (
     <div 
-      className="relative" 
+      className="relative group"
       onMouseEnter={() => setIsOpen(true)} 
       onMouseLeave={() => setIsOpen(false)}
     >
-      <Link to={to} className="text-white hover:text-yellow-500 text-xl">{label}</Link>
+      <Link to={to} className="text-white text-xl relative inline-block">
+        {label}
+        <span className="absolute left-0 bottom-0 w-full h-0.5 bg-yellow-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
+      </Link>
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -67,8 +70,6 @@ function DropdownMenu({ label, to }) {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             className="absolute left-0 mt-2 w-48 bg-white shadow-lg rounded-md"
-            onMouseEnter={() => setIsOpen(true)}
-            onMouseLeave={() => setIsOpen(false)}
           >
             <div className="p-2">
               <Link to={`${to}/sub1`} className="block px-4 py-2 hover:bg-gray-200">Submenu 1</Link>
