@@ -14,6 +14,7 @@ import Queries from "./Queries.js";
 import Admin from "./Admin.js";
 import AdminLogin from "./AdminLogin.js";
 import Profile from "./Profile.js";
+import Footer from "./Footer.js";
 
 
 
@@ -49,7 +50,7 @@ function App() {
             <div className="flex items-center space-x-20">
               <img src="/image/logo.jpg" alt="Dirghaayu Logo" className="h-12 w-12 rounded-full border-2 border-white" />
               <NavLink to="/" label="Home" />
-              <NavLink to="/query" label="Query" />
+              <NavLink to="/queries" label="Query" />
               <NavLink to="/appointment" label="Appointment" />
               <NavLink to="/donation" label="Donation" />
               <NavLink to="/aboutus" label="About Us" />
@@ -91,7 +92,7 @@ function App() {
           <Route path="/admin-login" element={<AdminLogin />} />
           <Route path="/profile" element={<Profile handleLogout={handleLogout} />} />
           <Route path="/queries" element={<Queries/>} />
-          
+          <Route path="/footer" element={<Footer/>} />
         </Routes>
       </Router>
     </div>
