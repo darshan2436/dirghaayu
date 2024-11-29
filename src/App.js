@@ -14,24 +14,26 @@ import image from "./Assets/background.jpg";
 
 function App() {
   return (
-    //  <div className=" home py-96 bg-gray-300 bg-scroll bg-cover " style={{ backgroundImage: `url(${image})`}}>
-    //  <div className="nav -my-96 py-0.5 bg-opacity-50 bg-green-200 rounded-lg">
-    //   <Router>
-    //     <nav className="m-5 position:sticky ">
-    <div className="home min-h-screen bg-gray-300 bg-cover bg-scroll" style={{ backgroundImage: `url(${image})` }}> 
-    <Router> 
-      <nav className="fixed top-0 left-0 w-full bg-opacity-90 bg-green-200 py-4 z-10 shadow-md"> 
-      <div className="container mx-auto flex justify-between items-center"> 
-        <div className="flex space-x-4">
-          <Link to="/" className="mx-4 hover:text-blue-500 text-xl hover:font-bold ">Home</Link>
-          <Link to="/appointment" className="mx-4 hover:text-blue-500 text-xl hover:font-bold ">Appointment</Link>
-          <Link to="/donation" className="mx-4 hover:text-blue-500 text-xl hover:font-bold">Donation</Link>
-          <Link to="/login" className="mx-4 hover:text-blue-500 text-xl hover:font-bold">Login</Link>
-          <Link to="/aboutus" className="mx-4 hover:text-blue-500 text-xl hover:font-bold">About Us</Link>
-         </div>
-         </div>
-
-
+    
+    <div className="min-h-sc"
+    style={{ backgroundImage: "url('/image/home.jpg')",
+     backgroundSize: "cover",
+     backgroundRepeat: "no-repeat",
+     backgroundPosition: "center", }}>
+    
+      <Router>
+        <nav className="p-4 shadow-md ">
+          <div className="container text-black mx-auto flex justify-between items-center">
+            <div className="flex space-x-4">
+              <DropdownMenu label="Home" to="/" />
+              <DropdownMenu label="Appointment" to="/appointment" />
+              <DropdownMenu label="Donation" to="/donation" />
+              <DropdownMenu label="About Us" to="/aboutus" />
+            </div>
+            <div>
+              <Link to="/login" className="text-black text-xl py-2 px-4 rounded-full border border-white transition duration-300 ease-in-out transform hover:shadow-lg hover:shadow-yellow-500 hover:border-yellow-500">Login</Link>
+            </div>
+          </div>
         </nav>
         <Routes>
           <Route path="/" element={<Home />} />
@@ -44,12 +46,40 @@ function App() {
 
         </Routes>
       </Router>
-      </div>
-      /* <div className="carousal">
-        <img src="${image}" alt="show the image" />
-      </div> */
-    
-    
+    </div>
+  );
+}
+
+function DropdownMenu({ label, to }) {
+  const [isOpen, setIsOpen] = React.useState(false);
+
+  return (
+    <div 
+      className="relative group"
+      onMouseEnter={() => setIsOpen(true)} 
+      onMouseLeave={() => setIsOpen(false)}
+    >
+      <Link to={to} className="text-black hover:text-blue-500 text-xl relative inline-block">
+        {label}
+        <span className="absolute left-0 bottom-0 w-full h-0.5 bg-yellow-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
+      </Link>
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            className="absolute left-0 mt-2 w-48 bg-white shadow-lg rounded-md"
+          >
+            <div className="p-2">
+              <Link to={`${to}/sub1`} className="block px-4 py-2 hover:bg-gray-200">Submenu 1</Link>
+              <Link to={`${to}/sub2`} className="block px-4 py-2 hover:bg-gray-200">Submenu 2</Link>
+              <Link to={`${to}/sub3`} className="block px-4 py-2 hover:bg-gray-200">Submenu 3</Link>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
   );
 }
 

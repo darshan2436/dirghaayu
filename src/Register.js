@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import logo from './Assets/logo.jpg';  
 
 function Register() {
     const [formData, setFormData] = useState({
@@ -103,7 +104,7 @@ function Register() {
         <div className="flex items-center justify-center min-h-screen bg-gray-200">
             <div className="bg-stone-400 p-8 rounded-lg shadow-slate-950 w-full max-w-sm shadow-2xl">
                 <div className="flex justify-center mb-4">
-                    <img src="image/logo.jpg" alt="Logo" className="h-20 rounded-2xl" />
+                    <img src={logo} alt="Logo" className="h-20 rounded-2xl" />
                 </div>
                 <h1 className="text-2xl font-bold text-center mb-6 hover:text-blue-900 text-yellow-900">Register for Dirghaayu</h1>
                 {error && <div className="text-red-500 text-sm mb-4">{error}</div>}
