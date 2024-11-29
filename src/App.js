@@ -13,9 +13,15 @@ import BmiCalculator from './BmiCalculator.js';
 
 function App() {
   return (
-    <div className="">
+    
+    <div className="min-h-sc"
+    style={{ backgroundImage: "url('/image/home.jpg')",
+     backgroundSize: "cover",
+     backgroundRepeat: "no-repeat",
+     backgroundPosition: "center", }}>
+    
       <Router>
-        <nav className="bg-gray-800 p-4 shadow-md">
+        <nav className="p-4 shadow-md">
           <div className="container mx-auto flex justify-between items-center">
             <div className="flex space-x-4">
               <DropdownMenu label="Home" to="/" />
